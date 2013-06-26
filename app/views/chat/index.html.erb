@@ -1,0 +1,24 @@
+<div ng-controller="ChatCtrl">
+	<div class="row-fluid">
+		<div class="span8 offset2 alert alert-info" id="chatBox" style="overflow:auto;height:400px;">
+			<div class="row-fluid" ng-repeat="message in messages">
+				<div class="span8">
+			      {{message.content}}
+				</div>
+				<div class="span4 text-left">
+			      <div class="pull-right">{{message.created_ago}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<form ng-submit="addMessage()">
+		<div class="span6 offset2">
+			<input type="text" rows="2" placeholder="Type your message here ..." class="span6" ng-model="newMessage.content"></textarea>
+		</div>
+		<div class="span2">
+			<button class="btn btn-primary btn-large nhm" type="submit"><i class="fui-mail"></i>Send</button>
+		</div>
+		</form>
+	</div>
+</div>

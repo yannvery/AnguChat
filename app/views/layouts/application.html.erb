@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="chat">
+<head>
+  <title>Anguchat</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-03">
+					</button>
+					<%= link_to "AnguChat", root_path, :class => "brand" %>
+				</div>
+			</div>
+		</div>
+		<%= yield %>
+	</div>
+</body>
+</html>
