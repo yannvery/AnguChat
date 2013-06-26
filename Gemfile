@@ -32,6 +32,10 @@ gem 'ng-rails-csrf', :git => "git://github.com/xrd/ng-rails-csrf.git"
 gem 'angularjs-rails'
 gem 'rails_12factor', group: :production
 
+group :development do
+  gem 'sqlite3'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
