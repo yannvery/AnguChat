@@ -24,6 +24,6 @@ Open web browser @ http://localhost:3000/
 Heroku documentation is available here : https://devcenter.heroku.com/articles/rails4-getting-started
 
 Short deploy :
-1 - heroku login
-2 - heroku create
-3 - git push heroku master
+1. heroku login
+2. heroku create
+3. git push heroku master
