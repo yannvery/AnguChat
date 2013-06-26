@@ -13,9 +13,8 @@ app.factory "QMessage", ["$resource", ($resource) ->
 app.controller "ChatCtrl", ["$scope", "Message", "QMessage", "$http", "$timeout", ($scope,Message,QMessage,$http,$timeout) ->
 	$scope.messages = Message.query({}, success = -> 
 		$scope.last_message = $scope.messages[$scope.messages.length-1].id
-		$("#chatBox").animate
-		  scrollTop: $("#chatBox")[0].scrollHeight
-		, 1000
+		$scope.$watch "messages", ->
+		  scrollChatBox()
 	)
 	
 	timer = setInterval(->
@@ -28,20 +27,23 @@ app.controller "ChatCtrl", ["$scope", "Message", "QMessage", "$http", "$timeout"
 				$scope.last_message = $scope.qmessages[$scope.qmessages.length-1].id
 		)
 		$scope.$apply()
-		$("#chatBox").animate
-		  scrollTop: $("#chatBox")[0].scrollHeight
-		, 1000
+		scrollChatBox()
 	, 5000)
 	
 	$scope.addMessage = ->
 		message = Message.save($scope.newMessage, success = -> 
 			$scope.messages.push(message)
 			$scope.last_message = $scope.messages[$scope.messages.length-1].id
-			#$scope.messages = Message.query()
 			$scope.newMessage = {}
-			$("#chatBox").animate
-			  scrollTop: $("#chatBox")[0].scrollHeight
-			, 1000
+			scrollChatBox()
 		)
-		
+	
+	#Scroll chatBox
+	scrollChatBox = ->
+		console.log($("#chatBox")[0].scrollHeight)
+		$("#chatBox").animate
+			scrollTop: $("#chatBox")[0].scrollHeight
+		, 1000
+		console.log($("#chatBox")[0].scrollHeight)
+	
 ]
