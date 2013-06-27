@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.help-chat {
+	height:41px;
+	padding-top: 0.5em;
+}
