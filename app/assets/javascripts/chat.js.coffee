@@ -31,6 +31,8 @@ app.controller "ChatCtrl", ["$scope", "Message", "QMessage", "$http", "$timeout"
 	, 5000)
 	
 	$scope.addMessage = ->
+		concatMessage = $scope.nickname.concat(" : ").concat($scope.newMessage.content)
+		$scope.newMessage.content = concatMessage
 		message = Message.save($scope.newMessage, success = -> 
 			$scope.messages.push(message)
 			$scope.last_message = $scope.messages[$scope.messages.length-1].id
@@ -40,10 +42,8 @@ app.controller "ChatCtrl", ["$scope", "Message", "QMessage", "$http", "$timeout"
 	
 	#Scroll chatBox
 	scrollChatBox = ->
-		console.log($("#chatBox")[0].scrollHeight)
 		$("#chatBox").animate
 			scrollTop: $("#chatBox")[0].scrollHeight
 		, 1000
-		console.log($("#chatBox")[0].scrollHeight)
 	
 ]
