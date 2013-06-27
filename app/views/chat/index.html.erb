@@ -11,19 +11,23 @@
 			</div>
 		</div>
 	</div>
-	<form ng-submit="addMessage()">
-		<div class="row-fluid">
+	<form name="addMessageForm" ng-submit="addMessage()" novalidate>
+		<div class="row-fluid control-group" ng:class="{error:addMessageForm.newMessage.$dirty && addMessageForm.nickname.$error.required}">
 			<div class="span3 offset2">
-				<input type="text" placeholder="Your nickname" class="span3" ng-model="nickname"></input>
+				<input type="text" placeholder="Your nickname" class="span3" name="nickname" ng-model="nickname" required></input>
+			</div>
+			<div class="span3 help-chat">
+				<div class="help-inline" ng-show="addMessageForm.newMessage.$dirty && addMessageForm.nickname.$error.required">Required</div>
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div class="span6 offset2">
-				<input type="text" rows="2" placeholder="Type your message here ..." class="span6" ng-model="newMessage.content"></input>
+				<input type="text" rows="2" placeholder="Type your message here ..." class="span6" name="newMessage" ng-model="newMessage.content" required></input>
 			</div>
 			<div class="span2">
-				<button class="btn btn-primary btn-large nhm" type="submit"><i class="fui-mail"></i>Send</button>
+				<button class="btn btn-primary btn-large nhm" type="submit" ng-disabled="addMessageForm.newMessage.$error.required || addMessageForm.nickname.$error.required"><i class="fui-mail"></i>Send</button>
 			</div>
 		</div>
 	</form>
 </div>
+<p>addMessage.nickname.$valid : {{addMessage.nickname.$valid}}</p>
