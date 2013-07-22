@@ -1,14 +1,14 @@
 Anguchat::Application.routes.draw do
   get "chat/index"
-  
+
   namespace "api/v1", :as=>:api do
-    resources :messages, :only => [:create, :index] do 
+    resources :messages, :only => [:create, :index] do
       post 'pool', :on => :collection
     end
   end
-  
+
   root "chat#index"
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -49,7 +49,7 @@ Anguchat::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
