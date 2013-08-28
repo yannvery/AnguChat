@@ -8,6 +8,10 @@ Bundler.require(:default, Rails.env)
 
 module Anguchat
   class Application < Rails::Application
+    # Set timezone
+    config.time_zone = 'Paris'
+    config.active_record.default_timezone = :local
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
